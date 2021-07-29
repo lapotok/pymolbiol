@@ -125,6 +125,8 @@ class Aln(MultipleSeqAlignment):
             return Aln(got)
         else:
             return got
+    def __add__(self, other):
+        return(Aln(super(Aln, self).__add__(other)))
     def show_logo(self):
         counts_mat = logomaker.alignment_to_matrix([str(r.seq) for r in self])
         logo = logomaker.Logo(counts_mat, figsize=[0.25 * self.npos(), 2])
